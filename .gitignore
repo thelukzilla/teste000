@@ -1,0 +1,5 @@
+# Saída gerada pelo build estático usado pela Vercel.
+dist/
+
+# Dependências locais caso alguém rode npm install no futuro.
+node_modules/

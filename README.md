@@ -1,31 +1,53 @@
-# Flower
-This repository contains examples and tutorials for the web technologies HTML, SCSS, and JS.
+# Bolão da Copa gdg BH
 
-### Downlode Source code from github
-Using This : 
+Aplicativo web estático para organizar um bolão de jogos da Copa para o grupo **gdg BH**, inspirado nas cores e no visual limpo dos produtos Google.
 
+## Recursos
+
+- Login local por nome e e-mail.
+- Cadastro de palpites por partida.
+- Pontuação automática por resultado correto e placar exato.
+- Multiplicador de gols quando o placar é cravado.
+- Ranking com participantes simulados e destaque para o usuário atual.
+- Persistência em `localStorage`, sem backend.
+- Projeto pronto para deploy estático na Vercel.
+
+## Regras de pontuação
+
+- **3 pontos** ao acertar o resultado do jogo: vitória do mandante, empate ou vitória do visitante.
+- **5 pontos** adicionais ao acertar o placar exato.
+- **Multiplicador de gols:** quando o placar é exato, cada lado cravado dobra o bônus do jogo. Um placar exato tem os dois lados corretos, então o total recebe multiplicador **×4**.
+
+## Como executar localmente
+
+Abra o arquivo `index.html` no navegador ou sirva a pasta com um servidor estático:
+
+```bash
+npm run dev
 ```
-$ git clone https://github.com/naveen-kumawat/Flower.git
+
+Depois acesse `http://localhost:3000`.
+
+## Deploy na Vercel
+
+Este repositório já inclui `package.json` e `vercel.json`, então a Vercel consegue iniciar o projeto sem configuração extra.
+
+1. Importe o repositório na Vercel.
+2. Use as configurações detectadas automaticamente.
+3. O comando `npm run build` valida os arquivos estáticos antes do deploy.
+4. A saída publicada é a pasta `dist/`, gerada automaticamente com `index.html`, `style.css`, `main.js` e `health.json`.
+
+Também é possível testar a validação localmente:
+
+```bash
+npm run build
 ```
 
-### Downlode Ruby 
-Downlode Ruby for the SCSS
-```
-npm i -g scss
-```
+## Estrutura
 
-### Map SCSS file with HTML
-
-```
-Follow Youtube Video For map scss file with html
-```
-<a href="https://www.youtube.com/@search4code?sub_confirmation=1">
-  <img src="https://static.vecteezy.com/system/resources/previews/018/930/572/non_2x/youtube-logo-youtube-icon-transparent-free-png.png" alt="YouTube Logo" width="80">
-</a>
-
-Also map js file with html file 
-
-Project run successfully
-
-
-![flower](https://user-images.githubusercontent.com/63699592/236506187-282f2dc3-cbcb-447c-81f4-63b127233ab9.png)
+- `index.html`: marcação semântica da landing, login, palpites e ranking.
+- `style.css`: CSS final usado pelo navegador.
+- `style.scss`: cópia editável do estilo para quem quiser evoluir com Sass.
+- `main.js`: regras do bolão, persistência local e renderização otimizada.
+- `vercel.json`: configuração de deploy estático, URLs limpas e headers básicos.
+- `scripts/build-static-app.js`: validação leve e cópia dos arquivos públicos para `dist/`.
