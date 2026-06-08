@@ -30,11 +30,11 @@ Depois acesse `http://localhost:3000`.
 
 ## Deploy na Vercel
 
-Este repositório já inclui `package.json` e `vercel.json`, então a Vercel consegue iniciar o projeto sem configuração extra.
+Este repositório já inclui `package.json` e `vercel.json`, então a Vercel consegue iniciar o projeto sem configuração extra. O `framework: null` evita que a Vercel tente usar presets de documentação como VitePress (`vitepress build docs`).
 
 1. Importe o repositório na Vercel.
-2. Use as configurações detectadas automaticamente.
-3. O comando `npm run build` valida os arquivos estáticos antes do deploy.
+2. Use as configurações detectadas automaticamente ou selecione **Other** como framework.
+3. Confirme que o Build Command é `npm run build` — não use `vitepress build docs`.
 4. A saída publicada é a pasta `dist/`, gerada automaticamente com `index.html`, `style.css`, `main.js` e `health.json`.
 
 Também é possível testar a validação localmente:
@@ -51,3 +51,13 @@ npm run build
 - `main.js`: regras do bolão, persistência local e renderização otimizada.
 - `vercel.json`: configuração de deploy estático, URLs limpas e headers básicos.
 - `scripts/build-static-app.js`: validação leve e cópia dos arquivos públicos para `dist/`.
+
+## Solução para erro de VitePress na Vercel
+
+Se o deploy mostrar `Command "vitepress build docs" exited with 127`, a Vercel está tentando usar um preset de documentação que este projeto não usa. Este app é estático e deve usar:
+
+- Framework Preset: **Other**
+- Build Command: `npm run build`
+- Output Directory: `dist`
+
+Esses valores já estão definidos no `vercel.json`; se houver override manual no painel da Vercel, remova o override ou atualize com os valores acima.
